@@ -16,7 +16,7 @@
  *       - コールバックは次の2つの引数を持つ
  *         - 第1引数: each関数の第1引数で受け取った配列の各要素を1ループごとにセットする
  *         - 第2引数: コールバック関数の第1引数で受け取った要素に対応するインデックス番号をセットする
- *       - コールバック関数は戻り値を持たない
+ *       - コールバック関数は戻り値を持たない　*戻り値：関数に処理を依頼した後、呼び出し元の関数に返す値
  *   - each関数は戻り値を持たない
  *   - 実装したeach関数が意図通り動くか確かめるためのコードを記述する
  *     - コールバック関数の中でconsole.logを使って、コールバック関数の第1引数と第2引数の値を確認する
@@ -29,11 +29,37 @@
  * https://tsuyopon.xyz/learning-contents/web-dev/javascript/javascript-grammar/how-to-iterate-an-array-in-js/
  */
 
-// ここでeach関数を作る
+// ここでeach関数を作る (関数を引数に受け取る)
 
+function each(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+        callback(array[i], i);
+    }
+}
 
 // ここでeach関数の挙動を確かめる
 
+const array1 = [ 1, 2, 3, 4];
+
+// array.forEachの挙動
+array1.forEach(function(element){
+    console.log(element);
+});
+
+// 白熱教室スライドの実装　*アロー関数になってる部分がよくわからない
+each (array1, (num, index) => {
+    console.log(index + ':' + num);
+})
+
+//自分の回答
+
+function arrayValue(num, index) {
+    console.log('each関数のコールバック関数内'+ 'index:' + index + ' 値:' + num);
+}
+
+const returnOfEach = each(array1, arrayValue);
+console.log('each関数の入力値' + array1);
+console.log('each関数の戻り値' + returnOfEach);
 
 /**
  * 課題2: 「Array.prototype.map()」と同等の機能を持つ関数を作る
