@@ -39,23 +39,15 @@ function each(array, callback) {
 
 // ここでeach関数の挙動を確かめる
 
-const array1 = [1, 2, 3, 4];
+const testArray = [1, 2, 3, 4];
 
+const returnOfEach = each(testArray, function (num, index) {
+    console.log('each関数のコールバック関数内 ' + 'index：' + index + ' 値：' + num);
+});
 
-// 白熱教室スライドの実装　*アロー関数になってる部分がよくわからない
-each(array1, (num, index) => {
-    console.log(index + ':' + num);
-})
+console.log(testArray);
+console.log(returnOfEach);
 
-//自分の回答
-
-function arrayValue(num, index) {
-    console.log('each関数のコールバック関数内' + 'index:' + index + ' 値:' + num);
-}
-
-const returnOfEach = each(array1, arrayValue);
-console.log('each関数の入力値' + array1);
-console.log('each関数の戻り値' + returnOfEach);
 
 /**
  * 課題2: 「Array.prototype.map()」と同等の機能を持つ関数を作る
