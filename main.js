@@ -76,11 +76,34 @@ console.log(returnOfEach);
  * 上の文章で実装する内容を理解するよりも、「Array.prototype.map()」のドキュメントの例を参考にmapがどんな挙動をするのか理解するのか理解したほうが早いかも。
  */
 
+//array.mapの挙動
+
+// const map1 = testArray.map(x => x * 2);
+
+// console.log(map1);
+
+// output : (4) [2, 4, 6, 8]
+
 // ここでmap関数を実装する
 
+function map (array, callback) {
+    const returnOfArray = [];       // 返り値が入る配列を定義
+    each(array, function(num, index){   // array[i]をnum, iをindexとしてeach関数のcallback関数でループ処理
+        const pushedNum = callback(num, index);   // array[i]=num, i=indexとしてmap関数のcallback関数を実行、返り値がpushedNumに入る
+        // console.log('num:' + num + ' index:' + index + ' pushedNum:' + pushedNum); // 確認用
+        returnOfArray.push(pushedNum); // map関数のcallback関数で取得したpushedNum(= num)を配列に追加する
+    })
+    return returnOfArray; // ループでできた配列をmap関数に返す？
+}
 
-// ここでmap関数の挙動を確認する
+const testArrayForMap = [1, 2, 3];
+const returnOfMap = map(testArrayForMap, function(num, index){
+    console.log('map関数のcallback関数内 index:' + index + ' 値：' + num );
+    return num * 2;
+});
 
+console.log(testArrayForMap);
+console.log(returnOfMap);
 
 
 /**
