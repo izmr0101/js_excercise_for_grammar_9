@@ -86,9 +86,9 @@ console.log(returnOfEach);
 
 // ここでmap関数を実装する
 
-function map (array, callback) {
+function map(array, callback) {
     const returnOfArray = [];       // 返り値が入る配列を定義
-    each(array, function(num, index){   // array[i]をnum, iをindexとしてeach関数のcallback関数でループ処理
+    each(array, function (num, index) {   // array[i]をnum, iをindexとしてeach関数のcallback関数でループ処理
         const pushedNum = callback(num, index);   // array[i]=num, i=indexとしてmap関数のcallback関数を実行、返り値がpushedNumに入る
         // console.log('num:' + num + ' index:' + index + ' pushedNum:' + pushedNum); // 確認用
         returnOfArray.push(pushedNum); // map関数のcallback関数で取得したpushedNum(= num)を配列に追加する
@@ -97,8 +97,8 @@ function map (array, callback) {
 }
 
 const testArrayForMap = [1, 2, 3];
-const returnOfMap = map(testArrayForMap, function(num, index){
-    console.log('map関数のcallback関数内 index:' + index + ' 値：' + num );
+const returnOfMap = map(testArrayForMap, function (num, index) {
+    console.log('map関数のcallback関数内 index:' + index + ' 値：' + num);
     return num * 2;
 });
 
@@ -147,11 +147,11 @@ console.log(returnOfMap);
 
 function filter(array, callback) {
     const filteredArray = [];
-    each(array, function(num, index){
+    each(array, function (num, index) {
         if (callback(num, index)) {
             // console.log('num:' + num + ' index:' + index); // 確認用
             filteredArray.push(num);
-        } 
+        }
     })
 
     return filteredArray;
@@ -161,8 +161,8 @@ function filter(array, callback) {
 
 const testArrayForFilter = [1, 2, 3, 4, 5];
 
-const returnOfFilter = filter(testArrayForFilter, function(num, index) {
-    console.log('filter関数のcallback関数内 index:' + index + ' 値：' + num );
+const returnOfFilter = filter(testArrayForFilter, function (num, index) {
+    console.log('filter関数のcallback関数内 index:' + index + ' 値：' + num);
     return num % 2 === 0;
 });
 
