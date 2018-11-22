@@ -135,8 +135,37 @@ console.log(returnOfMap);
  * 上の文章で実装する内容を理解するよりも、「Array.prototype.filter()」のドキュメントの例を参考にfilterがどんな挙動をするのか理解するのか理解したほうが早いかも。
  */
 
+// array.filterの挙動
+
+// const filter1 = testArray.filter(x => x % 2 === 0);
+
+// console.log(filter1);
+
+// output: (2) [2, 4]
+
 // ここでfilter関数を作る
 
+function filter(array, callback) {
+    const filteredArray = [];
+    each(array, function(num, index){
+        if (callback(num, index)) {
+            // console.log('num:' + num + ' index:' + index); // 確認用
+            filteredArray.push(num);
+        } 
+    })
+
+    return filteredArray;
+}
 
 // ここでfilter関数の挙動を確認する
+
+const testArrayForFilter = [1, 2, 3, 4, 5];
+
+const returnOfFilter = filter(testArrayForFilter, function(num, index) {
+    console.log('filter関数のcallback関数内 index:' + index + ' 値：' + num );
+    return num % 2 === 0;
+});
+
+console.log(testArrayForFilter);
+console.log(returnOfFilter);
 
